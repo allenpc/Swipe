@@ -303,8 +303,11 @@ function Swipe(container, options) {
         isScrolling = !!( isScrolling || Math.abs(delta.x) < Math.abs(delta.y) );
       }
 
-      // if user is not trying to scroll vertically
-      if (!isScrolling) {
+      var duration = +new Date - start.time;
+      var isTap = duration < 150 && Math.abs(delta.x) < 20;
+
+      // if user is not trying to scroll vertically and not just trying to tap a link
+      if (!(isScrolling || isTap)) {
 
         // prevent native scrolling 
         event.preventDefault();
