@@ -32,6 +32,7 @@ function Swipe(container, options) {
   options = options || {};
   var index = parseInt(options.startSlide, 10) || 0;
   var speed = options.speed || 300;
+  var slideThreshold
   options.continuous = options.continuous !== undefined ? options.continuous : true;
 
   function setup() {
@@ -345,7 +346,7 @@ function Swipe(container, options) {
 
       // determine if slide attempt triggers next/prev slide
       var isValidSlide = 
-            Number(duration) < 250               // if slide duration is less than 250ms
+            Number(duration) < 350               // if slide duration is less than 350ms
             && Math.abs(delta.x) > 20            // and if slide amt is greater than 20px
             || Math.abs(delta.x) > width/2;      // or if slide amt is greater than half the width
 
